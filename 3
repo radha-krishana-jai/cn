@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cstdlib> // for rand()
+#include <ctime> // for time()
+class Station {
+public:
+ Station(std::string name) : name(name) {}
+ void send() {
+ if (carrierBusy()) {
+ std::cout << name << " detects carrier busy, deferring transmission." << std::endl;
+ return;
+ }
+ std::cout << name << " is sending a message." << std::endl;
+ if (collisionDetected()) {
+ std::cout << name << " detects a collision, stopping transmission." << std::endl;
+ } else {
+ std::cout << name << " successfully transmitted the message." << std::endl;
+ }
+ }
+ bool carrierBusy() {
+ // Simulate a random chance of the carrier being busy
+ return rand() % 2 == 1;
+ }
+ bool collisionDetected() {
+ // Simulate a random chance of a collision
+ return rand()*% 2 == 1;
+ }
+ private:
+ std::string name;
+ };
+ int main() {
+
+ Station stationA("Station A");
+ Station stationB("Station B");
+ int i=1;
+ // Simulate both stations trying to send messages
+ while(i<=10){
+ std::cout<<"Scenario"<<i<<std::endl;
+ stationA.send();
+ stationB.send();
+ i++;
+ }
+ return 0;
+ }
